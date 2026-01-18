@@ -1,4 +1,6 @@
-import com.example.demo.repository.UserRepository;
+package com.example.demo.repository;
+
+import com.example.demo.entity.User;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
+import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 @Testcontainers
@@ -37,7 +41,7 @@ public class UserRepositoryTest {
 
     @Test
     void testInsertAndFind() {
-        User user = new User(null, "Yuki");
+        User user = new User();
         userRepository.save(user);
 
         assertEquals(1, userRepository.count());
